@@ -48,6 +48,7 @@ public class App {
         }
         long EndTime = System.currentTimeMillis();
         long timeElapsed = (EndTime - StartTime)/60000;
+        // print out total execution time for the program
         System.out.println("Total run time is "+timeElapsed);
     }
 
