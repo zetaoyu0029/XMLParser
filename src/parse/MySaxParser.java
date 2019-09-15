@@ -25,7 +25,6 @@ public class MySaxParser extends DefaultHandler{
     private StringBuilder data = null;
     private List<String> authors = null;
 
-    String XmlFileName;
     // getter method for three lists
     public List<Article> getArtList() {
         return artList;
@@ -34,11 +33,6 @@ public class MySaxParser extends DefaultHandler{
     public List<Inproceedings> getInpList() {
         return inpList;
     }
-
-//    public MySaxParser(String XmlFileName)
-//    {
-//        this.XmlFileName = XmlFileName;
-//    }
 
     boolean btitle = false;
     boolean bjournal = false;
@@ -109,7 +103,6 @@ public class MySaxParser extends DefaultHandler{
                 bauth = true;
             }
         }
-
         data = new StringBuilder();
 
     }
@@ -157,8 +150,8 @@ public class MySaxParser extends DefaultHandler{
             storeAuthor();
             // add article to list and set the flag to be false
             artList.add(article);
-            if (artList.size() > 5000 || artList.size() == 5000)
-            {
+            if (artList.size() > 5000 || artList.size() == 5000) {
+                // connect database and send data whenever over 5000
                 send(artList);
             }
             isArt = false;
@@ -167,8 +160,8 @@ public class MySaxParser extends DefaultHandler{
             storeAuthor();
             // add the object to list and set the flag to be false
             inpList.add(inproceedings);
-            if (inpList.size() > 5000 || inpList.size() == 5000)
-            {
+            if (inpList.size() > 5000 || inpList.size() == 5000) {
+                // connect database and send data whenever over 5000
                 send(inpList);
             }
             isInp = false;
@@ -189,9 +182,9 @@ public class MySaxParser extends DefaultHandler{
             authorship.setAuthor(author);
             authList.add(authorship);
         }
-        // send if over 5000
-        if (authList.size() > 5000 || authList.size() == 5000)
-        {
+
+        if (authList.size() > 5000 || authList.size() == 5000) {
+            // connect database and send data whenever over 5000
             send(authList);
         }
         // clear temp authors
@@ -199,6 +192,7 @@ public class MySaxParser extends DefaultHandler{
         authorship = new Authorship();
     }
 
+    // send data to database
     public void send(List list)
     {
         JDBCpostgre post = new JDBCpostgre();

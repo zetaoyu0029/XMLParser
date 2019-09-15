@@ -28,7 +28,7 @@ public class JDBCpostgre {
     }
 
     /**
-     * insert multiple actors
+     * insert Articles in batch
      */
     public void insertArticle(List<Article> list) {
         String SQL = "INSERT INTO \"Article\"(pubkey,title,journal,year) "
@@ -58,6 +58,9 @@ public class JDBCpostgre {
 
     }
 
+    /**
+     * insert Inproceedings in batch
+     */
     public void insertInp(List<Inproceedings> list) {
         String SQL = "INSERT INTO \"Inproceedings\"(pubkey,title,booktitle,year) "
                 + "VALUES(?,?,?,?)";
@@ -86,6 +89,9 @@ public class JDBCpostgre {
 
     }
 
+    /**
+     * insert Authorship in batch
+     */
     public void insertAuth(List<Authorship> list) {
         String SQL = "INSERT INTO \"Authorship\"(pubkey,author) "
                 + "VALUES(?,?)" + "ON CONFLICT (pubkey,author) DO NOTHING";

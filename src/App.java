@@ -29,13 +29,6 @@ public class App {
             //Get model.Inproceedings list
             List<Inproceedings> inpList = handler.getInpList();
 
-//            //print all information
-//            for(Article a : artList)
-//                System.out.println(a);
-//            for(Authorship b : authList)
-//                System.out.println(b);
-//            for(Inproceedings c : inpList)
-//                System.out.println(c);
 //            int count = 0;
 //            for (Authorship a: authList)
 //            {
@@ -43,11 +36,9 @@ public class App {
 //                    count++;
 //            }
 //            System.out.println(count);
-            // store all information to PostGre database
+
+            // store the rest of the list to PostGre database
             JDBCpostgre post = new JDBCpostgre();
-//            System.out.println("\nArticle count size is: "+artList.size());
-//            System.out.println("\nInproceedings count size is: "+inpList.size());
-//            System.out.println("\nAuthorship count size is: "+authList.size());
             if (artList.size() > 0) {post.insertArticle(artList);}
             if (inpList.size() > 0) {post.insertInp(inpList);}
             if (authList.size() > 0) {post.insertAuth(authList);}
@@ -60,14 +51,4 @@ public class App {
         System.out.println("Total run time is "+timeElapsed);
     }
 
-    public static List<Authorship> checkRepitition(List<Authorship> list)
-    {
-//        Set<Authorship> s= new HashSet<Authorship>();
-//        s.addAll(list);
-//        list = new ArrayList<Authorship>();
-//        list.addAll(s);
-        LinkedHashSet<Authorship> hashSet = new LinkedHashSet<Authorship>(list);
-        List<Authorship> listWithoutDuplicates = new ArrayList<Authorship>(hashSet);
-        return listWithoutDuplicates;
-    }
 }
