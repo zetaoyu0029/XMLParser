@@ -206,5 +206,7 @@ public class MySaxParser extends DefaultHandler{
             post.insertAuth(authList);
             authList.clear();
         }
+
+        return;
     }
 }

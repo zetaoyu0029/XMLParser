@@ -32,7 +32,7 @@ public class App {
 //            int count = 0;
 //            for (Authorship a: authList)
 //            {
-//                if(a.getAuthor().equals("Philip S. Yu"))
+//                if(a.getAuthor().equals("Wei Wang"))
 //                    count++;
 //            }
 //            System.out.println(count);
